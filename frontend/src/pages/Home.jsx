@@ -1,20 +1,36 @@
 import MovieCard from "../components/MovieCard";
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { searchMovies, getPopularMovies } from "../services/api";
-import MovieFilters from "../context/MovieFilter"; // Import filters
+import MovieFilters from "../context/MovieFilter";
 import "../css/Home.css";
 
 function Home() {
     const [searchQuery, setSearchQuery] = useState("");
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
+
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
-        const loadPopularMovies = async () => {
+        const params = new URLSearchParams(location.search);
+        const query = params.get("query") || "";
+
+        setSearchQuery(query); 
+
+        const fetchMovies = async () => {
+            setLoading(true);
             try {
-                const popularMovies = await getPopularMovies();
-                setMovies(popularMovies);
+                if (query) {
+                    const searchResults = await searchMovies(query);
+                    setMovies(searchResults);
+                } else {
+                    const popularMovies = await getPopularMovies();
+                    setMovies(popularMovies);
+                }
+                setError(null);
             } catch (err) {
                 console.log(err);
                 setError("Failed to load movies...");
@@ -23,29 +39,17 @@ function Home() {
             }
         };
 
-        loadPopularMovies();
-    }, []);
+        fetchMovies();
+    }, [location.search]); // Runs whenever search query in URL changes
 
-    const handleSearch = async (e) => {
+    const handleSearch = (e) => {
         e.preventDefault();
         if (!searchQuery.trim() || loading) return;
-
-        setLoading(true);
-        try {
-            const searchResults = await searchMovies(searchQuery);
-            setMovies(searchResults);
-            setError(null);
-        } catch (err) {
-            console.log(err);
-            setError("Failed to search movies...");
-        } finally {
-            setLoading(false);
-        }
+        navigate(`?query=${searchQuery}`); // Triggers the useEffect
     };
 
     return (
         <div className="home">
-            {/* Search Form */}
             <form onSubmit={handleSearch} className="search-form">
                 <input
                     type="text"
@@ -57,12 +61,10 @@ function Home() {
                 <button type="submit" className="search-button">Search</button>
             </form>
 
-            {/* Movie Filters */}
             <MovieFilters setMovies={setMovies} />
 
             {error && <div className="error-message">{error}</div>}
 
-            {/* Movies Grid */}
             {loading ? (
                 <div className="loading">Loading...</div>
             ) : (
