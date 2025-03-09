@@ -14,6 +14,9 @@ function NavBar() {
         <li>
           <Link to="/favorites" className="nav-link">Favorites</Link>
         </li>
+        <li>
+          <Link to="/torrents" className="nav-link">Torrents</Link>
+        </li>
       </ul>
     </nav>
   );

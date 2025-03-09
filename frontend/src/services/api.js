@@ -37,6 +37,12 @@ export const getPopularMovies = async () => {
 export const getGenres = async () => {
   const response = await fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`);
   const data = await response.json();
-  console.log("Genres API Response:", data); // Debugging
+  console.log("Genres API Response:", data);
   return data.genres || [];
 };
+export async function getMovieDetails(id) {
+  const res = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`);
+  if (!res.ok) throw new Error("Failed to fetch movie details");
+  return res.json();
+}
+
