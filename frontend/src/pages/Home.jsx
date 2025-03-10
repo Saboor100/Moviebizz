@@ -40,12 +40,12 @@ function Home() {
         };
 
         fetchMovies();
-    }, [location.search]); // Runs whenever search query in URL changes
+    }, [location.search]); 
 
     const handleSearch = (e) => {
         e.preventDefault();
         if (!searchQuery.trim() || loading) return;
-        navigate(`?query=${searchQuery}`); // Triggers the useEffect
+        navigate(`?query=${searchQuery}`); 
     };
 
     return (

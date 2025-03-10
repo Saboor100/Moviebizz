@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/torrents" element={<TorrentLinks />} />
-          <Route path="/movie/:id" element={<MovieDetails />} /> {/* Add Movie Details Route */}
+          <Route path="/movie/:id" element={<MovieDetails />} />
         </Routes>
       </main>
     </MovieProvider>

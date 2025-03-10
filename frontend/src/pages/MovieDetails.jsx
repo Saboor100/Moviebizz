@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getMovieDetails } from "../services/api"; // Fetch movie details
-
+import { getMovieDetails } from "../services/api"; 
+import "../css/MovieDetails.css"; 
 
 function MovieDetails() {
-    const { id } = useParams(); // Get movie ID from URL
+    const { id } = useParams();
     const [movie, setMovie] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -30,13 +30,15 @@ function MovieDetails() {
     if (error) return <div className="error-message">{error}</div>;
 
     return (
-        <div className="movie-details">
-            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="movie-poster"/>
-            <div className="details-content">
-                <h1>{movie.title}</h1>
-                <p><strong>Release Date:</strong> {movie.release_date}</p>
-                <p><strong>Rating:</strong> ⭐ {movie.vote_average.toFixed(1)}</p>
-                <p><strong>Overview:</strong> {movie.overview}</p>
+        <div className="movie-page">
+            <div className="movie-container">
+                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="movie-poster"/>
+                <div className="movie-info">
+                    <h1>{movie.title}</h1>
+                    <p className="release-date"><strong>Release Date:</strong> {movie.release_date}</p>
+                    <p className="rating"><strong>Rating:</strong> ⭐ {movie.vote_average.toFixed(1)}</p>
+                    <p className="overview">{movie.overview}</p>
+                </div>
             </div>
         </div>
     );
