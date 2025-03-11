@@ -1,76 +1,109 @@
-/* MovieDetails.css */
-.movie-details {
-    position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #1a1a1a;
-  transition: transform 0.2s;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+.movie-details-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 40px;
+    background: #121212;
+    color: white;
+    max-width: 1100px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.movie-poster-container {
+    width: 300px;
 }
 
 .movie-poster {
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.details-content {
-    margin-left: 20px;
+.movie-info {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.details-content h1 {
+.movie-title {
     font-size: 32px;
     font-weight: bold;
 }
 
-.details-content p {
-    font-size: 18px;
-    margin: 5px 0;
+.movie-year {
+    font-size: 24px;
+    color: #aaa;
 }
 
-.rating {
+.movie-meta {
+    font-size: 16px;
+    color: #bbb;
+}
+
+.rating-container {
     display: flex;
     align-items: center;
-    margin: 10px 0;
+    gap: 10px;
+    margin-top: 10px;
 }
 
-.rating-circle {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+.user-score {
+    background-color: #21d07a;
+    color: black;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-radius: 50%;
 }
 
-.play-button {
-    background-color: #ff3d00;
+.user-score-text {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.trailer-button {
+    background-color: #ff0000;
     color: white;
-    padding: 10px 20px;
-    font-size: 18px;
+    padding: 10px 15px;
+    font-size: 16px;
     font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.3s;
     display: flex;
     align-items: center;
+    gap: 8px;
 }
 
-.play-button svg {
-    margin-right: 8px;
+.trailer-button:hover {
+    background-color: #cc0000;
 }
 
-.streaming-banner {
-    background-color: black;
-    padding: 10px;
+.tagline {
+    font-style: italic;
+    color: #ccc;
+}
+
+h3 {
+    font-size: 20px;
     margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
 }
 
-.streaming-banner img {
-    width: 20px;
-    margin-right: 8px;
+.overview {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ddd;
+}
+
+.crew {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.crew-member {
+    text-align: center;
+    font-size: 14px;
 }
