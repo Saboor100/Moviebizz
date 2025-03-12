@@ -63,18 +63,18 @@
 }
 @media (max-width: 1024px) {
   .movies-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 movies per row on medium screens */
+    grid-template-columns: repeat(3, 1fr); 
   }
 }
 
 @media (max-width: 768px) {
   .movies-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 movies per row on tablets */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
   .movies-grid {
-    grid-template-columns: repeat(1, 1fr); /* 1 movie per row on mobile */
+    grid-template-columns: repeat(1, 1fr);
   }
 }

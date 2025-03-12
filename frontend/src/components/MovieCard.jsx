@@ -7,7 +7,7 @@ function MovieCard({ movie }) {
     const favorite = isFavorite(movie.id);
 
     function onFavoriteClick(e) {
-        e.preventDefault(); // Prevent navigation when clicking favorite button
+        e.preventDefault();
         if (favorite) {
             removeFromFavorites(movie.id);
         } else {
@@ -29,7 +29,6 @@ function MovieCard({ movie }) {
                     <p className="movie-overview">{movie.overview.slice(0, 100)}...</p>
                 </div>
             </Link>
-            {/* Favorite button moved outside the Link */}
             <button className={`favorite-btn ${favorite ? "active" : ""}`} onClick={onFavoriteClick}>
                 ♥
             </button>
