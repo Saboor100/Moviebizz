@@ -1,38 +1,38 @@
 
 import API_KEY from "../config";
-const BASE_URL =  "https://api.themoviedb.org/3"
+const BASE_URL = "https://api.themoviedb.org/3"
 
 export const getPopularMovies = async () => {
-    const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
-    const data = await response.json();
-    return data.results;
-  };
-  
-  export const searchMovies = async (query) => {
-    const response = await fetch(
-      `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
-        query
-      )}`
-    );
-    const data = await response.json();
-    return data.results;
-  };
-  export const getFilteredMovies = async ({ genreId, year, actorId }) => {
-    let url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`;
+  const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+  const data = await response.json();
+  return data.results;
+};
 
-    if (genreId) {
-        url += `&with_genres=${genreId}`;
-    }
-    if (year) {
-        url += `&primary_release_year=${year}`;
-    }
-    if (actorId) {
-        url += `&with_cast=${actorId}`;
-    }
+export const searchMovies = async (query) => {
+  const response = await fetch(
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
+      query
+    )}`
+  );
+  const data = await response.json();
+  return data.results;
+};
+export const getFilteredMovies = async ({ genreId, year, actorId }) => {
+  let url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`;
 
-    const response = await fetch(url);
-    const data = await response.json();
-    return data.results;
+  if (genreId) {
+    url += `&with_genres=${genreId}`;
+  }
+  if (year) {
+    url += `&primary_release_year=${year}`;
+  }
+  if (actorId) {
+    url += `&with_cast=${actorId}`;
+  }
+
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.results;
 };
 export const getGenres = async () => {
   const response = await fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`);
@@ -45,4 +45,3 @@ export async function getMovieDetails(id) {
   if (!res.ok) throw new Error("Failed to fetch movie details");
   return res.json();
 }
-//<------END---->
