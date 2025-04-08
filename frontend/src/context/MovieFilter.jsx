@@ -12,7 +12,7 @@ const MovieFilters = ({ setMovies }) => {
                 const data = await getGenres();
                 console.log("Fetched genres:", data); // Debugging
                 if (data && Array.isArray(data)) {
-                    setGenres(data); // Fix: Ensure the correct data format
+                    setGenres(data); 
                 } else {
                     console.error("Unexpected genres format:", data);
                 }
@@ -36,7 +36,7 @@ const MovieFilters = ({ setMovies }) => {
                 setMovies(filteredMovies);
             } else {
                 console.warn("No movies found for selected filters.");
-                setMovies([]);  // Clear movie list if no results
+                setMovies([]);
             }
         } catch (error) {
             console.error("Error fetching filtered movies:", error);
