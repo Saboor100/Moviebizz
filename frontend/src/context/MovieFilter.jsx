@@ -69,4 +69,3 @@ const MovieFilters = ({ setMovies }) => {
 
 export default MovieFilters;
 
-//<------END----->
