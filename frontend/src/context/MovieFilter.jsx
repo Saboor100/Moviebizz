@@ -10,9 +10,9 @@ const MovieFilters = ({ setMovies }) => {
         const fetchGenres = async () => {
             try {
                 const data = await getGenres();
-                console.log("Fetched genres:", data);
+                console.log("Fetched genres:", data);//Jeeee
                 if (data && Array.isArray(data)) {
-                    setGenres(data); 
+                    setGenres(data);
                 } else {
                     console.error("Unexpected genres format:", data);
                 }
@@ -22,8 +22,8 @@ const MovieFilters = ({ setMovies }) => {
         };
         fetchGenres();
     }, []);
-    
-    
+
+
 
     const handleFilter = async () => {
         try {
