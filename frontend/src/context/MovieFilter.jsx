@@ -10,7 +10,7 @@ const MovieFilters = ({ setMovies }) => {
         const fetchGenres = async () => {
             try {
                 const data = await getGenres();
-                console.log("Fetched genres:", data);
+                console.log("Fetched genres:", data);//Right
                 if (data && Array.isArray(data)) {
                     setGenres(data);
                 } else {
