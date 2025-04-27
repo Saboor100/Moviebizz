@@ -15,7 +15,7 @@ function Home() {
     const location = useLocation();
 
     useEffect(() => {
-        const params = new URLSearchParams(location.search);
+        const params = new URLSearchParams(location.search); //Right
         const query = params.get("query") || "";
 
         setSearchQuery(query); 
