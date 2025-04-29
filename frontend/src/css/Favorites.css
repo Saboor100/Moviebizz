@@ -2,7 +2,6 @@
   margin-left: 3rcap;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 100px));
-  /* Adjust min size */
   gap: 1.5rem;
   padding: 1rem;
   width: 100%;
